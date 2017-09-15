@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<Head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>The Tomb of the Mad King (Game v0.2)</title>
+		<style>
+			div {
+				margin:auto;
+				width:50%;
+				border:5px solid brown;
+				padding:10px;
+				text-align:center;
+				}
+		</style>
+	</Head>
+	<Body>
+		<div>
+			Welcome to <br/><h2><em>the Tomb of the Mad King</em></h2><br/>
+			<textarea readonly id="story" rows="10" cols="50">You stand at the entrance to the Mad King's Tomb. A grand wooden doorway swings open infront of you leading into the twisting tunnels of the catacombs below.</textarea><br/>
+			<input type="button" value="north" onclick="north()">
+			<input type="button" value="west" onclick="west()">
+			<input type="button" value="south" onclick="south()">
+			<input type="button" value="east" onclick="east()">
+			<script>
+				var firstW = true;
+				var firstS = true;
+				var firstE = true;
+				var messagePoints = " You mark this down in your journal hoping to return later.";
+				var messageCollapse = " you also begin to hear the walls crumbling around you as it seems you have overstayed your welcome, best to return to the entrance with your journal of findings and your life.";
+				var finish = false
+				function north() {
+					if (finish == false){
+						var messageBase = "You stand at the Northern entrance to the Mad King's Tomb. A grand wooden doorway swings open infront of you leading into the twisting tunnels of the catacombs below.";
+						document.getElementById("story").innerHTML = messageBase;
+						var messagePointsN = " you narrowly escape the tunnels before they collapse behind you. Congragulations on escaping the Mad King's Tomb!";
+						if ( document.getElementById("points").innerHTML == 15){
+							document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + messagePointsN;
+							document.getElementById("points").innerHTML = 5 + parseInt(document.getElementById("points").innerHTML);
+							finish = true
+						}
+					}
+				}
+				function west() {
+					if (finish == false){
+						var messageBase = "To the west a small room opens up at the end of this passageway. The cobble walls and ceiling struggle to hold back the dirt pressuring from the otherside. In the room there are four stone statues two seem to be of an elderly couple, one is a middle aged man, and the last is a small child that at first glance looks to be no older than ten.";
+						document.getElementById("story").innerHTML = messageBase;
+						if (firstW == true){
+							document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + messagePoints;
+							document.getElementById("points").innerHTML = 5 + parseInt(document.getElementById("points").innerHTML);
+							firstW = false;
+						}
+						if ( document.getElementById("points").innerHTML == 15){
+							document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + messageCollapse;
+						}
+					}
+				}
+				function south() {
+					if (finish == false){
+						var messageBase = "You walk into a large room to the south. Across the cobbled floor is an ornate golden chest, inside the chest are many important artifacts.";
+						document.getElementById("story").innerHTML = messageBase;
+						if (firstS == true){
+							document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + messagePoints;
+							document.getElementById("points").innerHTML = 5 + parseInt(document.getElementById("points").innerHTML);
+							firstS = false;
+						}
+						if ( document.getElementById("points").innerHTML == 15){
+							document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + messageCollapse;
+						}
+					}
+				}
+				function east() {
+					if (finish == false){
+						var messageBase = "Heading east you come to a small tunnel of dirt, the ground held at bay by small wooden beams. You see a coffin sealed shut by monstrous iron nails at the end of the trail.";
+						document.getElementById("story").innerHTML = messageBase;
+						if (firstE == true){
+							document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + messagePoints;
+							document.getElementById("points").innerHTML = 5 + parseInt(document.getElementById("points").innerHTML);
+							firstE = false;
+						}
+						if ( document.getElementById("points").innerHTML == 15){
+							document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + messageCollapse;
+						}
+					}
+				}
+			</script>
+			<br/>you currently have <p id="points">0</p> points
+			<!--
+			wait a sec. Really good analogy for if statements is a highway, if you don't need 
+			gas you don't get off the highway.
+			Locations
+			N:Entrance to the tomb
+				You stand at the entrance to the Mad King's Tomb. A grand wooden doorway swings open infront of you leading into the twisting tunnels of the catacombs below.
+			W:Statue room
+				A small room opens up at then end of this passageway. The cobble walls and ceiling struggle to hold back the dirt pressuring from the otherside. In the room there are four stone statues two seem to be of an elderly couple, one is a middle aged man, and the last is a small child that at first glance looks to be no older than ten.You jot this down in your journal hoping to return here later.
+			S:Treasure room	
+				You walk into a large room. Across the cobbled floor is an ornate golden chest, inside the chest are many important artifacts. You mark this down in a journal hoping to return later.
+			E:The king's coffin
+				In this small tunnel of dirt, held up by wooden beams you see a coffin sealed shut by monstrous iron nails.You mark this down in your journal hoping to return later.
+			-->
+			<br/><br/><br/>
+			<p>created by Connor Doetsch for CMPT 120L 202<br>
+			have a question... shoot me an email <a href="mailto:connor.doetsch1@marist.edu">here</a>
+		</div>
+	</Body>
+</html>
