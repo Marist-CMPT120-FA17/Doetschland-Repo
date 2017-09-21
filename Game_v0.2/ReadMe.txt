@@ -1,0 +1,2 @@
+I know the assigment says to recive 5 points everytime the player enters a new area but I got carried away, 
+The northern area only gives out points when a certain condition is met (no spoilers but if you visit the other areas you will find it) 
