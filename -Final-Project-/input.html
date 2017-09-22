@@ -8,7 +8,12 @@
 	</input>
 	<input type="button" value="Submit" onclick="writeOn()">
 	</input>
-	<p id="demo">You are standing in a room to your West is a door.</p>
+	<br/>
+	<input type="button" value="North" onclick="Move(1)"/>
+	<input type="button" value="West" onclick="Move(2)"/>
+	<input type="button" value="South" onclick="Move(3)"/>
+	<input type="button" value="East" onclick="Move(4)"/>
+	<p id="demo">You are standing in a room to your South is a door.</p>
 	<script>
 		var room = "start";
 		<!--document.getElementById("demo").innerHTML = "";-->
@@ -24,6 +29,69 @@
 			EndRoom();
 			}
 		}
+		function Move(go){
+			if (room == "start"){
+				switch (go){
+					case 1:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("start 1");
+						break;
+					case 2:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("start 2");
+						break;
+					case 3:
+						document.getElementById("demo").innerHTML = "you head south and enter into a medium sized room";
+						console.log("start 3");
+						room = "middle";
+						break;
+					case 4:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("start 4");
+						break;
+				}
+			}else if (room == "middle"){
+				switch (go){
+					case 1:
+						document.getElementById("demo").innerHTML = "you head north and enter into a small sized room";
+						console.log("middle 1");
+						room = "start";
+						break;
+					case 2:
+						document.getElementById("demo").innerHTML = "you head west through the window and enter into a large sized room";
+						console.log("middle 2");
+						room = "end";
+						break;
+					case 3:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("middle 3");
+					case 4:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("middle 4");
+						break;
+				}
+			}else if (room == "end"){
+				switch (go){
+					case 1:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("end 1");
+						break;
+					case 2:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("end 2");
+						break;
+					case 3:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("end 3");
+						break;
+					case 4:
+						document.getElementById("demo").innerHTML = "you head east through the window and enter into a medium sized room";
+						console.log("end 4");
+						room = "middle";
+						break;
+				}
+			}
+		}
 		function StartRoom(){
 			var textIn = document.getElementById("text").value;
 			console.log("start");
@@ -31,9 +99,6 @@
 			document.getElementById("demo").innerHTML = "you see a small room with a door in the south side";
 			}else if (textIn == "look at door"){
 			document.getElementById("demo").innerHTML = "you see a small wooden door";
-			}else if (textIn == "go south"){
-			document.getElementById("demo").innerHTML = "you head south and enter into a medium sized room";
-			room = "middle";
 			}
 		}
 		function MiddleRoom(){
@@ -43,12 +108,6 @@
 			document.getElementById("demo").innerHTML = "you see a medium room with a door in the north side and a window to the west";
 			}else if (textIn == "look at door"){
 			document.getElementById("demo").innerHTML = "you see a small wooden door";
-			}else if (textIn == "go north"){
-			document.getElementById("demo").innerHTML = "you head north and enter into a small sized room";
-			room = "start";
-			}else if (textIn == "go west"){
-			document.getElementById("demo").innerHTML = "you head west through the window and enter into a large sized room";
-			room = "end";
 			}
 		}
 		function EndRoom(){
@@ -58,9 +117,6 @@
 			document.getElementById("demo").innerHTML = "you see a large room with a window in the east side";
 			}else if (textIn == "look at door"){
 			document.getElementById("demo").innerHTML = "you see a small window";
-			}else if (textIn == "go east"){
-			document.getElementById("demo").innerHTML = "you head east through the window and enter into a medium sized room";
-			room = "middle";
 			}
 		}
 		
