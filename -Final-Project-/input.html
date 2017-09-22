@@ -10,27 +10,60 @@
 	</input>
 	<p id="demo">You are standing in a room to your West is a door.</p>
 	<script>
-		var textIn = document.getElementById("text").value;
 		var room = "start";
+		<!--document.getElementById("demo").innerHTML = "";-->
 		function writeOn(){ 
-			while ( room == "start" ){
-				console.log("here");
-				if (textIn == "look"){
-				document.getElementById("demo").innerHTML = "You are standing in a room to your west is a door.";
-				}else if (textIn == "go west"){
-				document.getElementById("demo").innerHTML = "You head to the west and step into a small room.";
-				room = "end";
-				}
+			console.log("begin");
+			if (room == "start"){
+			StartRoom();
 			}
-			while ( room == "end" ){
-				console.log("there");
-				if (textIn == "look"){
-				document.getElementById("demo").innerHTML = "You are standing in a room to your east is a door.";
-				}else if (textIn == "go east"){
-				room = "start";
-				}
+			if (room == "middle"){
+			MiddleRoom();
+			}
+			if (room == "end"){
+			EndRoom();
 			}
 		}
+		function StartRoom(){
+			var textIn = document.getElementById("text").value;
+			console.log("start");
+			if (textIn == "look"){
+			document.getElementById("demo").innerHTML = "you see a small room with a door in the south side";
+			}else if (textIn == "look at door"){
+			document.getElementById("demo").innerHTML = "you see a small wooden door";
+			}else if (textIn == "go south"){
+			document.getElementById("demo").innerHTML = "you head south and enter into a medium sized room";
+			room = "middle";
+			}
+		}
+		function MiddleRoom(){
+			var textIn = document.getElementById("text").value;
+			console.log("middle");
+			if (textIn == "look"){
+			document.getElementById("demo").innerHTML = "you see a medium room with a door in the north side and a window to the west";
+			}else if (textIn == "look at door"){
+			document.getElementById("demo").innerHTML = "you see a small wooden door";
+			}else if (textIn == "go north"){
+			document.getElementById("demo").innerHTML = "you head north and enter into a small sized room";
+			room = "start";
+			}else if (textIn == "go west"){
+			document.getElementById("demo").innerHTML = "you head west through the window and enter into a large sized room";
+			room = "end";
+			}
+		}
+		function EndRoom(){
+			var textIn = document.getElementById("text").value;
+			console.log("end");
+			if (textIn == "look"){
+			document.getElementById("demo").innerHTML = "you see a large room with a window in the east side";
+			}else if (textIn == "look at door"){
+			document.getElementById("demo").innerHTML = "you see a small window";
+			}else if (textIn == "go east"){
+			document.getElementById("demo").innerHTML = "you head east through the window and enter into a medium sized room";
+			room = "middle";
+			}
+		}
+		
 	</script>
 </body>
 </html>
