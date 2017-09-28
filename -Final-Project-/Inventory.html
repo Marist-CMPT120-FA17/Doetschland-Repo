@@ -17,7 +17,8 @@
 	<script>
 		var room = "start";
 		var hasKey = false;
-		<!--document.getElementById("demo").innerHTML = "";-->
+		var hasSword = false;
+		var hasLantern = false;
 		function writeOn(){ 
 			console.log("begin");
 			if (room == "start"){
@@ -108,9 +109,10 @@
 			}else if (textIn == "look at door"){
 			document.getElementById("demo").innerHTML = "you see a small wooden door";
 			}else if (textIn == "get key"){
-			document.getElementById("demo").innerHTML = "you pick up the key off the ground";
+			document.getElementById("demo").innerHTML = "you pick up the key off of the ground";
 			hasKey = true;
 			}
+			inventory();
 		}
 		function MiddleRoom(){
 			var textIn = document.getElementById("text").value;
@@ -119,7 +121,11 @@
 			document.getElementById("demo").innerHTML = "you see a medium room with a door in the north side and a window to the west";
 			}else if (textIn == "look at door"){
 			document.getElementById("demo").innerHTML = "you see a small wooden door";
+			}else if (textIn == "get lantern"){
+			document.getElementById("demo").innerHTML = "you pick up the lantern off of the ground";
+			hasLantern = true;
 			}
+			inventory();
 		}
 		function EndRoom(){
 			var textIn = document.getElementById("text").value;
@@ -128,6 +134,25 @@
 			document.getElementById("demo").innerHTML = "you see a large room with a window in the east side";
 			}else if (textIn == "look at door"){
 			document.getElementById("demo").innerHTML = "you see a small window";
+			}else if (textIn == "get sword"){
+			document.getElementById("demo").innerHTML = "you pick up the sword off of the ground";
+			hasSword = true;
+			}
+			inventory();
+		}
+		function inventory(){
+			var textIn = document.getElementById("text").value;
+			if (textIn == "inventory"){
+				document.getElementById("demo").innerHTML = "";
+				if(hasKey == true){
+				document.getElementById("demo").innerHTML = (document.getElementById("demo").innerHTML) + "you have a small iron key <br/>";
+				}
+				if(hasSword == true){
+				document.getElementById("demo").innerHTML = (document.getElementById("demo").innerHTML) + "you have a sword <br/>";
+				}
+				if(hasLantern == true){
+				document.getElementById("demo").innerHTML = (document.getElementById("demo").innerHTML) + "you have a lantern <br/>";
+				}
 			}
 		}
 		
