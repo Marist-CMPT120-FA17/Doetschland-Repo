@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+</head>
+<body>
+	<input id="text" value="">
+	</input>
+	<input type="button" value="Submit" onclick="writeOn()">
+	</input>
+	<p id="demo">You are standing in a room to your left is a door and to your right is a small box.</p>
+	<script>
+		var boxOpen = false;
+		var hasKey = false;
+		function writeOn(){ 
+			var textIn = document.getElementById("text").value;
+			if (textIn == "look"){
+			document.getElementById("demo").innerHTML = "You are standing in a room to your left is a door and to your right is a small box.";
+			}else if ((textIn == "look at box") && (boxOpen == false)){
+			document.getElementById("demo").innerHTML = "You see a small box with a hinge that allows it to open.";
+			}else if ((textIn == "look at box") && (boxOpen == true)){
+			document.getElementById("demo").innerHTML = "You see a small box with a hinge that allows it to open inside is a small key.";
+			}else if (textIn == "open box"){
+			document.getElementById("demo").innerHTML = "The box opens to reveal a small key.";
+			boxOpen = true;
+			}else if ((textIn == "look at key") && ((boxOpen == true) || (hasKey == true))){
+			document.getElementById("demo").innerHTML = "The key is small yet ornate with letters you do not understand etched into it, the key seems to be made of solid gold.";
+			}else if ((textIn == "get key") && (boxOpen == true)){
+			document.getElementById("demo").innerHTML = "You take the key out of the box.";
+			hasKey = true;
+			}else if (textIn == "look at door"){
+			document.getElementById("demo").innerHTML = "The door is locked with a large gold padlock.";
+			}else if ((textIn == "open door") && (hasKey == true)){
+			document.getElementById("demo").innerHTML = "You use the key to open the door and step outside.";
+			}else if ((textIn == "open door") && (hasKey == false)){
+			document.getElementById("demo").innerHTML = "The door is locked no matter how much you push or pull it will not open.";
+			}
+		}
+	</script>
+</body>
+</html>
