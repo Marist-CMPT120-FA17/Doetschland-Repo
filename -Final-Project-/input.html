@@ -8,34 +8,118 @@
 	</input>
 	<input type="button" value="Submit" onclick="writeOn()">
 	</input>
-	<p id="demo">You are standing in a room to your left is a door and to your right is a small box.</p>
+	<br/>
+	<input type="button" value="North" onclick="Move(1)"/>
+	<input type="button" value="West" onclick="Move(2)"/>
+	<input type="button" value="South" onclick="Move(3)"/>
+	<input type="button" value="East" onclick="Move(4)"/>
+	<p id="demo">You are standing in a room to your South is a door.</p>
 	<script>
-		var boxOpen = false;
-		var hasKey = false;
+		var room = "start";
+		<!--document.getElementById("demo").innerHTML = "";-->
 		function writeOn(){ 
-			var textIn = document.getElementById("text").value;
-			if (textIn == "look"){
-			document.getElementById("demo").innerHTML = "You are standing in a room to your left is a door and to your right is a small box.";
-			}else if ((textIn == "look at box") && (boxOpen == false)){
-			document.getElementById("demo").innerHTML = "You see a small box with a hinge that allows it to open.";
-			}else if ((textIn == "look at box") && (boxOpen == true)){
-			document.getElementById("demo").innerHTML = "You see a small box with a hinge that allows it to open inside is a small key.";
-			}else if (textIn == "open box"){
-			document.getElementById("demo").innerHTML = "The box opens to reveal a small key.";
-			boxOpen = true;
-			}else if ((textIn == "look at key") && ((boxOpen == true) || (hasKey == true))){
-			document.getElementById("demo").innerHTML = "The key is small yet ornate with letters you do not understand etched into it, the key seems to be made of solid gold.";
-			}else if ((textIn == "get key") && (boxOpen == true)){
-			document.getElementById("demo").innerHTML = "You take the key out of the box.";
-			hasKey = true;
-			}else if (textIn == "look at door"){
-			document.getElementById("demo").innerHTML = "The door is locked with a large gold padlock.";
-			}else if ((textIn == "open door") && (hasKey == true)){
-			document.getElementById("demo").innerHTML = "You use the key to open the door and step outside.";
-			}else if ((textIn == "open door") && (hasKey == false)){
-			document.getElementById("demo").innerHTML = "The door is locked no matter how much you push or pull it will not open.";
+			console.log("begin");
+			if (room == "start"){
+			StartRoom();
+			}
+			if (room == "middle"){
+			MiddleRoom();
+			}
+			if (room == "end"){
+			EndRoom();
 			}
 		}
+		function Move(go){
+			if (room == "start"){
+				switch (go){
+					case 1:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("start 1");
+						break;
+					case 2:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("start 2");
+						break;
+					case 3:
+						document.getElementById("demo").innerHTML = "you head south and enter into a medium sized room";
+						console.log("start 3");
+						room = "middle";
+						break;
+					case 4:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("start 4");
+						break;
+				}
+			}else if (room == "middle"){
+				switch (go){
+					case 1:
+						document.getElementById("demo").innerHTML = "you head north and enter into a small sized room";
+						console.log("middle 1");
+						room = "start";
+						break;
+					case 2:
+						document.getElementById("demo").innerHTML = "you head west through the window and enter into a large sized room";
+						console.log("middle 2");
+						room = "end";
+						break;
+					case 3:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("middle 3");
+					case 4:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("middle 4");
+						break;
+				}
+			}else if (room == "end"){
+				switch (go){
+					case 1:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("end 1");
+						break;
+					case 2:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("end 2");
+						break;
+					case 3:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("end 3");
+						break;
+					case 4:
+						document.getElementById("demo").innerHTML = "you head east through the window and enter into a medium sized room";
+						console.log("end 4");
+						room = "middle";
+						break;
+				}
+			}
+		}
+		function StartRoom(){
+			var textIn = document.getElementById("text").value;
+			console.log("start");
+			if (textIn == "look"){
+			document.getElementById("demo").innerHTML = "you see a small room with a door in the south side";
+			}else if (textIn == "look at door"){
+			document.getElementById("demo").innerHTML = "you see a small wooden door";
+			}
+		}
+		function MiddleRoom(){
+			var textIn = document.getElementById("text").value;
+			console.log("middle");
+			if (textIn == "look"){
+			document.getElementById("demo").innerHTML = "you see a medium room with a door in the north side and a window to the west";
+			}else if (textIn == "look at door"){
+			document.getElementById("demo").innerHTML = "you see a small wooden door";
+			}
+		}
+		function EndRoom(){
+			var textIn = document.getElementById("text").value;
+			console.log("end");
+			if (textIn == "look"){
+			document.getElementById("demo").innerHTML = "you see a large room with a window in the east side";
+			}else if (textIn == "look at door"){
+			document.getElementById("demo").innerHTML = "you see a small window";
+			}
+		}
+		
 	</script>
 </body>
 </html>
