@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+</head>
+<body>
+	<input id="text" value="">
+	</input>
+	<input type="button" value="Submit" onclick="writeOn()">
+	</input>
+	<br/>
+	<input type="button" value="North" onclick="Move(1)"/>
+	<input type="button" value="West" onclick="Move(2)"/>
+	<input type="button" value="South" onclick="Move(3)"/>
+	<input type="button" value="East" onclick="Move(4)"/>
+	<p id="demo">You are standing in a room to your South is a door and on the floor there is a key</p>
+	<script>
+		var room = "start";
+		var hasKey = false;
+		var hasSword = false;
+		var hasLantern = false;
+		function writeOn(){ 
+			console.log("begin");
+			if (room == "start"){
+			StartRoom();
+			}
+			if (room == "middle"){
+			MiddleRoom();
+			}
+			if (room == "end"){
+			EndRoom();
+			}
+		}
+		function Move(go){
+			if (room == "start"){
+				switch (go){
+					case 1:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("start 1");
+						break;
+					case 2:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("start 2");
+						break;
+					case 3:
+						document.getElementById("demo").innerHTML = "you head south and enter into a medium sized room";
+						console.log("start 3");
+						room = "middle";
+						break;
+					case 4:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("start 4");
+						break;
+				}
+			}else if (room == "middle"){
+				switch (go){
+					case 1:
+						document.getElementById("demo").innerHTML = "you head north and enter into a small sized room";
+						console.log("middle 1");
+						room = "start";
+						break;
+					case 2:
+						if (hasKey == true){
+						document.getElementById("demo").innerHTML = "you head west through the window and enter into a large sized room";
+						console.log("middle 2");
+						room = "end";
+						}else if(hasKey == false){
+							document.getElementById("demo").innerHTML = "The window is latched shut with an old iron lock, there is no way to proceed without a key";
+						}
+						break;
+					case 3:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("middle 3");
+					case 4:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("middle 4");
+						break;
+				}
+			}else if (room == "end"){
+				switch (go){
+					case 1:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("end 1");
+						break;
+					case 2:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("end 2");
+						break;
+					case 3:
+						document.getElementById("demo").innerHTML = "There is no exit this way.";
+						console.log("end 3");
+						break;
+					case 4:
+						document.getElementById("demo").innerHTML = "you head east through the window and enter into a medium sized room";
+						console.log("end 4");
+						room = "middle";
+						break;
+				}
+			}
+		}
+		function StartRoom(){
+			var textIn = document.getElementById("text").value;
+			console.log("start");
+			if (textIn == "look"){
+			document.getElementById("demo").innerHTML = "you see a small room with a door in the south side.";
+				if(hasKey == false){
+					document.getElementById("demo").innerHTML = (document.getElementById("demo").innerHTML) + " There is a key on the ground at your feet.";
+				}
+			}else if (textIn == "look at door"){
+			document.getElementById("demo").innerHTML = "you see a small wooden door";
+			}else if (textIn == "get key"){
+			document.getElementById("demo").innerHTML = "you pick up the key off of the ground";
+			hasKey = true;
+			}
+			inventory();
+		}
+		function MiddleRoom(){
+			var textIn = document.getElementById("text").value;
+			console.log("middle");
+			if (textIn == "look"){
+			document.getElementById("demo").innerHTML = "you see a medium room with a door in the north side and a window to the west";
+			}else if (textIn == "look at door"){
+			document.getElementById("demo").innerHTML = "you see a small wooden door";
+			}else if (textIn == "get lantern"){
+			document.getElementById("demo").innerHTML = "you pick up the lantern off of the ground";
+			hasLantern = true;
+			}
+			inventory();
+		}
+		function EndRoom(){
+			var textIn = document.getElementById("text").value;
+			console.log("end");
+			if (textIn == "look"){
+			document.getElementById("demo").innerHTML = "you see a large room with a window in the east side";
+			}else if (textIn == "look at door"){
+			document.getElementById("demo").innerHTML = "you see a small window";
+			}else if (textIn == "get sword"){
+			document.getElementById("demo").innerHTML = "you pick up the sword off of the ground";
+			hasSword = true;
+			}
+			inventory();
+		}
+		function inventory(){
+			var textIn = document.getElementById("text").value;
+			if (textIn == "inventory"){
+				document.getElementById("demo").innerHTML = "";
+				if(hasKey == true){
+				document.getElementById("demo").innerHTML = (document.getElementById("demo").innerHTML) + "you have a small iron key <br/>";
+				}
+				if(hasSword == true){
+				document.getElementById("demo").innerHTML = (document.getElementById("demo").innerHTML) + "you have a sword <br/>";
+				}
+				if(hasLantern == true){
+				document.getElementById("demo").innerHTML = (document.getElementById("demo").innerHTML) + "you have a lantern <br/>";
+				}
+			}
+		}
+		
+	</script>
+</body>
+</html>
