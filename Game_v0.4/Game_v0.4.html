@@ -7,12 +7,12 @@ Game_v0.4
 -->
 	<Head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<title>The Tomb of the Mad King (Game v0.4)</title>
+		<title>The Travelers Curse (Game v0.4)</title>
 		<style>
 			div.game {
 				margin:auto;
 				width:60%;
-				border:20px solid brown;
+				border:20px solid blue;
 				padding:5px;
 				text-align:center;
 				background-color:silver;
@@ -25,88 +25,227 @@ Game_v0.4
 	<Body>
 		<div class="background">
 			<div class="game">
-				Welcome to <br/><h2><em>the Tomb of the Mad King</em></h2><br/>
-				<textarea readonly id="story" rows="10" cols="50">You stand at the entrance to the Mad King's Tomb. A grand wooden doorway swings open infront of you leading into the twisting tunnels of the catacombs below.</textarea><br/>
-				<input type="button" value="north" onclick="north()">
-				<input type="button" value="west" onclick="west()">
-				<input type="button" value="south" onclick="south()">
-				<input type="button" value="east" onclick="east()">
+				Welcome to <br/><h2><em>the Travelers Curse</em></h2><br/>
+				<textarea readonly id="story" rows="10" cols="50">you wake up to a start as a loud siren blares in your ear, the engine of your space faring vessel is badly damaged and in need of repairs. you grab some gear and look north towards the airlock.</textarea><br/>
+				<textarea id="input" rows="2" cols="48"></textarea><br/>
+				<input type="button" value="go" onclick="go()"><br/><br/>
+				<input id="n" type="button" value="north" onclick="Move(1)"><br/>
+				<input disabled="true" id="w" type="button" value="west" onclick="Move(2)">
+				<input disabled="true" id="e" type="button" value="east" onclick="Move(4)"><br/>
+				<input disabled="true" id="s" type="button" value="south" onclick="Move(3)">
 				<script>
-					var firstW = true;
-					var firstS = true;
-					var firstE = true;
-					var messagePoints = " You mark this down in your journal hoping to return later.";
-					var messageCollapse = " you also begin to hear the walls crumbling around you as it seems you have overstayed your welcome, best to return to the entrance with your journal of findings and your life.";
-					var finish = false;
-					function north() {
-						if (finish == false){
-							var messageBase = "You stand at the Northern entrance to the Mad King's Tomb. A grand wooden doorway swings open infront of you leading into the twisting tunnels of the catacombs below.";
-							document.getElementById("story").innerHTML = messageBase;
-							var messagePointsN = " you narrowly escape the tunnels before they collapse behind you. Congragulations on escaping the Mad King's Tomb!";
-							if ( document.getElementById("points").innerHTML == 15){
-								document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + messagePointsN;
-								document.getElementById("points").innerHTML = 5 + parseInt(document.getElementById("points").innerHTML);
-								finish = true
+					var room = "one";
+					var first2 = true;
+					var first3 = true;
+					var first4 = true;
+					var first5 = true;
+					var first6 = true;
+					var Loc1Text = "You stand in front of your doomed engine, it's in dire need of repairs. Best to head out the airlock to the north and look for someone to help";
+					var Loc2Text = "The air lock to your ship stands to the south you feelas thoug you could travel down the hill to the west, but to the north is a large cobbled road that leads to a bridge.";
+					var Loc3Text = "A small stream sits in front of you down the stream you see the bridge. to your north seems to be some structure, and to your east is your ship.";
+					var Loc4Text = "You stand on a small wooden bridge that goes over a small stream. to the south is your ship and to the North the road continues.";
+					var Loc5Text = "You come face to face with a large stone castle, perhaps someone could be inside. to your west a bramble becomes very thick (no luck going that way) but to the east you could wrap around the side of the structure, to your south you also spot a small river.";
+					var Loc6Text = "You come the end of a road and are in front of a large gate to a castle, you bang and yell but no one answers. you can travel around to the west or head south beack towards your ship.";
+					var messagePoints = " You record this in you log book, hoping that maybe one day someone will come looking for you";
+					function go(){
+						if(document.getElementById("input").innerHTML.toUppercase == "N"){
+							Move(1);
+						}else if(document.getElementById("input").innerHTML.toUppercase == "W"){
+							Move(2);
+						}else if(document.getElementById("input").innerHTML.toUppercase == "S"){
+							Move(3);
+						}else if(document.getElementById("input").innerHTML.toUppercase == "E"){
+							Move(4);
+						}else{
+							document.getElementById("input").innerHTML = "Please write only a cardinal direction"
+						}
+					}
+					function Move(go){
+						if (room == "one"){
+							switch (go){
+								case 1:
+									document.getElementById("story").innerHTML = "You head out to the exterior of the ship.";
+									console.log("start 1");
+									room = "two"
+									updatedisplay(Loc2Text);;
+									break;
+								case 2:
+									document.getElementById("story").innerHTML = "There is no exit this way.";
+									console.log("start 2");
+									break;
+								case 3:
+									document.getElementById("story").innerHTML = "There is no exit this way.";
+									console.log("start 3");
+									break;
+								case 4:
+									document.getElementById("story").innerHTML = "There is no exit this way.";
+									console.log("start 4");
+									break;
+							}
+						}else if (room == "two"){
+							switch (go){
+								case 1:
+									document.getElementById("story").innerHTML = "you head towards the bridge, perhaps there will be someone who can help on this main pathway.";
+									console.log("middle 1");
+									room = "four"
+									updatedisplay(Loc4Text);;
+									break;
+								case 2:
+									document.getElementById("story").innerHTML = "you head down towards the river bank, better to stay off the main road in your condition.";
+									console.log("middle 2");
+									room = "three"
+									updatedisplay(Loc3Text);;
+									break;
+								case 3:
+									document.getElementById("story").innerHTML = "you head back into your ship.";
+									console.log("middle 3");
+									room = "one";
+									updatedisplay(Loc1Text);;
+									break;
+								case 4:
+									document.getElementById("story").innerHTML = "There is no exit this way.";
+									console.log("middle 4");
+									break;
+							}
+						}else if (room == "three"){
+							switch (go){
+								case 1:
+									document.getElementById("story").innerHTML = "you ford the river and head up the side of a hill.";
+									console.log("end 1");
+									room = "five"
+									updatedisplay(Loc5Text);;
+									break;
+								case 2:
+									document.getElementById("story").innerHTML = "There is no exit this way.";
+									console.log("end 2");
+									break;
+								case 3:
+									document.getElementById("story").innerHTML = "There is no exit this way.";
+									console.log("end 3");
+									break;
+								case 4:
+									document.getElementById("story").innerHTML = "you travel back to your ship.";
+									console.log("end 4");
+									room = "two"
+									updatedisplay(Loc2Text);;
+									break;
+							}
+						}else if (room == "four"){
+							switch (go){
+								case 1:
+									document.getElementById("story").innerHTML = "you head further along the road.";
+									console.log("end 1");
+									room = "six"
+									updatedisplay(Loc6Text);;
+									break;
+								case 2:
+									document.getElementById("story").innerHTML = "There is no exit this way.";
+									console.log("end 2");
+									break;
+								case 3:
+									document.getElementById("story").innerHTML = "You travel back to your ship.";
+									console.log("end 3");
+									room = "two"
+									updatedisplay(Loc2Text);;
+									break;
+								case 4:
+									document.getElementById("story").innerHTML = "There is no exit this way.";
+									console.log("end 4");
+									break;
+							}
+						}else if (room == "five"){
+							switch (go){
+								case 1:
+									document.getElementById("story").innerHTML = "There is no exit this way.";
+									console.log("end 1");
+									break;
+								case 2:
+									document.getElementById("story").innerHTML = "There is no exit this way.";
+									console.log("end 2");
+									break;
+								case 3:
+									document.getElementById("story").innerHTML = "you slide back down the small hillside.";
+									console.log("end 3");
+									room = "three"
+									updatedisplay(Loc3Text);;
+									break;
+								case 4:
+									document.getElementById("story").innerHTML = "you wrap around the side of the castle wall.";
+									console.log("end 4");
+									room = "six"
+									updatedisplay(Loc6Text);
+									break;
+							}
+						}else if (room == "six"){
+							switch (go){
+								case 1:
+									document.getElementById("story").innerHTML = "There is no exit this way.";
+									console.log("end 1");
+									break;
+								case 2:
+									document.getElementById("story").innerHTML = "you wrap around the side of the castle wall.";
+									console.log("end 2");
+									room = "five"
+									updatedisplay(Loc5Text);
+									break;
+								case 3:
+									document.getElementById("story").innerHTML = "You head back to the old bridge.";
+									console.log("end 3");
+									room = "four"
+									updatedisplay(Loc4Text);
+									break;
+								case 4:
+									document.getElementById("story").innerHTML = "There is no exit this way.";
+									console.log("end 4");
+									break;
 							}
 						}
 					}
-					function west() {
-						if (finish == false){
-							var messageBase = "To the west a small room opens up at the end of this passageway. The cobble walls and ceiling struggle to hold back the dirt pressuring from the otherside. In the room there are four stone statues two seem to be of an elderly couple, one is a middle aged man, and the last is a small child that at first glance looks to be no older than ten.";
-							document.getElementById("story").innerHTML = messageBase;
-							if (firstW == true){
-								document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + messagePoints;
-								document.getElementById("points").innerHTML = 5 + parseInt(document.getElementById("points").innerHTML);
-								firstW = false;
-							}
-							if ( document.getElementById("points").innerHTML == 15){
-								document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + messageCollapse;
-							}
+					function updatedisplay(message){
+						document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + message;
+						document.getElementById("n").disabled = false;
+						document.getElementById("w").disabled = false;
+						document.getElementById("s").disabled = false;
+						document.getElementById("e").disabled = false;
+						if(room == "one"){
+							document.getElementById("w").disabled = true;
+							document.getElementById("s").disabled = true;
+							document.getElementById("e").disabled = true;
+						}else if(room == "two"){
+							document.getElementById("e").disabled = true;
+						}else if(room == "three"){
+							document.getElementById("w").disabled = true;
+							document.getElementById("s").disabled = true;
+						}else if(room == "four"){
+							document.getElementById("w").disabled = true;
+							document.getElementById("e").disabled = true;
+						}else if(room == "five"){
+							document.getElementById("n").disabled = true;
+							document.getElementById("w").disabled = true;
+						}else if(room == "six"){
+							document.getElementById("n").disabled = true;
+							document.getElementById("e").disabled = true;
 						}
-					}
-					function south() {
-						if (finish == false){
-							var messageBase = "You walk into a large room to the south. Across the cobbled floor is an ornate golden chest, inside the chest are many important artifacts.";
-							document.getElementById("story").innerHTML = messageBase;
-							if (firstS == true){
-								document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + messagePoints;
-								document.getElementById("points").innerHTML = 5 + parseInt(document.getElementById("points").innerHTML);
-								firstS = false;
-							}
-							if ( document.getElementById("points").innerHTML == 15){
-								document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + messageCollapse;
-							}
+						if(message == Loc2Text && first2 == true){
+							document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
+							first2 = false;
+						} else if(message == Loc3Text && first3 == true){
+							document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
+							first3 = false;
+						} else if(message == Loc4Text && first4 == true){
+							document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
+							first4 = false;
+						} else if(message == Loc5Text && first5 == true){
+							document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
+							first5 = false;
+						} else if(message == Loc6Text && first6 == true){
+							document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
+							first6 = false;
 						}
-					}
-					function east() {
-						if (finish == false){
-							var messageBase = "Heading east you come to a small tunnel of dirt, the ground held at bay by small wooden beams. You see a coffin sealed shut by monstrous iron nails at the end of the trail.";
-							document.getElementById("story").innerHTML = messageBase;
-							if (firstE == true){
-								document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + messagePoints;
-								document.getElementById("points").innerHTML = 5 + parseInt(document.getElementById("points").innerHTML);
-								firstE = false;
-							}
-							if ( document.getElementById("points").innerHTML == 15){
-								document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + messageCollapse;
-							}
-						}
+						
 					}
 				</script>
 				<br/>you currently have <p id="points">0</p> points
-				<!--
-				wait a sec. Really good analogy for if statements is a highway, if you don't need 
-				gas you don't get off the highway.
-				Locations
-				N:Entrance to the tomb
-					You stand at the entrance to the Mad King's Tomb. A grand wooden doorway swings open infront of you leading into the twisting tunnels of the catacombs below.
-				W:Statue room
-					A small room opens up at then end of this passageway. The cobble walls and ceiling struggle to hold back the dirt pressuring from the otherside. In the room there are four stone statues two seem to be of an elderly couple, one is a middle aged man, and the last is a small child that at first glance looks to be no older than ten.You jot this down in your journal hoping to return here later.
-				S:Treasure room	
-					You walk into a large room. Across the cobbled floor is an ornate golden chest, inside the chest are many important artifacts. You mark this down in a journal hoping to return later.
-				E:The king's coffin
-					In this small tunnel of dirt, held up by wooden beams you see a coffin sealed shut by monstrous iron nails.You mark this down in your journal hoping to return later.
-				-->
 				<br/><br/><br/>
 				<p>created by Connor Doetsch for CMPT 120L 202<br>
 				have a question... shoot me an email <a href="mailto:connor.doetsch1@marist.edu">here</a>
