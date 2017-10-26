@@ -1,0 +1,12 @@
+/*The CSS file for Game_v0.6.html*/
+div.game {
+	margin:auto;
+	width:60%;
+	border:20px solid DarkOrange;
+	padding:5px;
+	text-align:center;
+	background-color:silver;
+	}
+div.background{
+	background-color:black;
+}

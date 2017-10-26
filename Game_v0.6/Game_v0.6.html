@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<!--
+Connor Doetsch
+11/2/17
+Game_v0.6
+-->
+	<Head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Death House (Game v0.6)</title>
+		<link rel="stylesheet" type="text/css" href="Game_v0.6_CSS.css">
+	</Head>
+	<Body onload="start()">
+		<div class="background">
+			<div class="game">
+				Welcome to <br/><h2><em>Death House</em></h2><br/>
+				<textarea readonly id="story" rows="10" cols="50"></textarea><br/>
+				<textarea id="input" rows="2" cols="48"></textarea><br/>
+				<input type="button" value="go" onclick="go()"><br/><br/>
+				<input id="n" type="button" value="north" onclick="Move(1)"><br/>
+				<input disabled="true" id="w" type="button" value="west" onclick="Move(2)">
+				<input disabled="true" id="e" type="button" value="east" onclick="Move(4)"><br/>
+				<input disabled="true" id="s" type="button" value="south" onclick="Move(3)"><br/>
+				<script src="Game_v0.6_JavaScript.js"></script>
+				<br/>you currently have <p id="points">0</p> points
+				<br/><br/><br/>
+				<p>created by Connor Doetsch for CMPT 120L 202<br>
+				have a question... shoot me an email <a href="mailto:connor.doetsch1@marist.edu">here</a>
+			</div>
+			<div class="background">
+			<div>
+		</div>
+	</Body>
+</html>
