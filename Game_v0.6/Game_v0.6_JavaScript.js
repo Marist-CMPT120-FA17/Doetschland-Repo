@@ -59,8 +59,10 @@ function go(){
 	}else if((document.getElementById("input").value).toUpperCase() == "TAKE COURAGE" && items.hascourage == false && room == "ten"){
 		items.hascourage = true;
 		itemget();
+	}else if((document.getElementById("input").value).toUpperCase() == "LIST" && (items.hasplate == true || items.hascourage == true || items.hasswords == true || items.hasfork == true)){
+		itemlist()
 	}else{
-		document.getElementById("input").value = "Please write only a cardinal direction or the take [item] action"
+		document.getElementById("input").value = "Please write only a cardinal direction, the take [item] action or the List action if you have items to inspect"
 	}
 }
 
@@ -69,6 +71,24 @@ function itemget(){
 	document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + "you pick it up and put it in your bag.";
 	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
 }
+
+function itemlist(){
+	document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + " You have a";
+	if(item.hasfork == true){
+		document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + " fork";
+	}
+	if(item.hasplate == true){
+		document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + " platter";
+	}
+	if(item.hasswords == true){
+		document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + " infinte swords";
+	}
+	if(item.hascourage == true){
+		document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + " courage";
+	}
+	document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + "in your bag.";
+}
+
 function updatedisplay(move){
 	document.getElementById("n").disabled = false;
 	document.getElementById("w").disabled = false;
