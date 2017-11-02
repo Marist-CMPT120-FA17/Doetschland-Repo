@@ -1,16 +1,16 @@
 //JavaScript file for Game_v0.6.html
 var room = "one";
 var first ={
-	1:true,
-	2:true,
-	3:true,
-	4:true,
-	5:true,
-	6:true,
-	7:true,
-	8:true,
-	9:true,
-	10:true
+	one:true,
+	two:true,
+	three:true,
+	four:true,
+	five:true,
+	six:true,
+	seven:true,
+	eight:true,
+	nine:true,
+	ten:true,
 }
 var items = {
 	hasfork:false,
@@ -19,246 +19,288 @@ var items = {
 	hasplate:false
 }
 var LocText = {
-	1:"",
-	2:"",
-	3:"",
-	4:"",
-	5:"",
-	6:"",
-	7:"",
-	8:"",
-	9:"",
-	10:""
+	one:"Foolish Mortal you have angered me!!!! Go into these putrid wastes and find me four items for my feast. You will know you have found them because they will look like *this*.",
+	two:"walking along a path some zombies enter your view they talka while and then one of them seems to have won a prize. A brain sits on a silver platter, the zombie eats the brain, leaves the *platter* and all the zombies shamble off.",
+	three:"You come to a sign in the road it reads <west zombies> <north cliffs> you also see a small cave to the east.",
+	four:"a small cave with tight passageways greets you but before you can get your bearings a small spider jumps towards you. the creature skitters under your feet showing much *courage* and travels off to the north.",
+	five:"you enter a cave containing infinite *swords*... the perfect size to be tooth picks for a Demon.",
+	six:"you come to a *fork* in the road.",
+	seven:"A skeleton animates as you enter the cave clearing, it plays it's rib cage like a xylophone and nods it head towards you. The cave entrance is to the north and further in is to the south.",
+	eight:"two large suits of knights armor flank the entrance to a large cave. Both do not have any weapons and cannot impeed your progress.",
+	nine:"You overlook a cliff, Some bats fly near your face to harass you before passing on into the night you can travel west or east along the cliff or south away from the drop.",
+	ten:"you come to an entrance to a cave, the clattering of bones on stone is heard within.",
+	tencont:"you see a small spider filled with *courage* on the ground",
+	win:"You hand over the four items and the Demon looks pleased, perhaps you will live to see another day!"
 }
 function onstart(){
 	console.log("AHHHH");
-	document.getElementById("story").innerHTML = "Foolish Mortal you have angered me!!!! Go into these putrid wastes and find me four items for my feast.";	
+	document.getElementById("story").innerHTML = LocText.one;	
 }
 function go(){
-	if(document.getElementById("input").innerHTML == "N"){
-		Move(1);
-		console.log("please work");
-	}else if(document.getElementById("input").innerHTML.toUppercase == "W"){
-		Move(2);
-	}else if(document.getElementById("input").innerHTML.toUppercase == "S"){
-		Move(3);
-	}else if(document.getElementById("input").innerHTML.toUppercase == "E"){
-		Move(4);
+	console.log("AHHHH");
+	if((document.getElementById("input").value).toUpperCase() == "N"){
+		console.log("AHHHH");
+		updatedisplay("n");
+	}else if((document.getElementById("input").value).toUpperCase() == "W"){
+		updatedisplay("w");
+	}else if((document.getElementById("input").value).toUpperCase() == "S"){
+		updatedisplay("s");
+	}else if((document.getElementById("input").value).toUpperCase() == "E"){
+		updatedisplay("e");
+	}else if((document.getElementById("input").value).toUpperCase() == "TAKE PLATTER" && items.hasplate == false && room == "two"){
+		items.hasplate = true;
+		itemget();
+	}else if((document.getElementById("input").value).toUpperCase() == "TAKE FORK" && items.hasfork == false && room == "six"){
+		items.hasfork = true;
+		itemget();
+	}else if((document.getElementById("input").value).toUpperCase() == "TAKE SWORDS" && items.hasswords == false && room == "five"){
+		items.hasswords = true;
+		itemget();
+	}else if((document.getElementById("input").value).toUpperCase() == "TAKE COURAGE" && items.hascourage == false && room == "ten"){
+		items.hascourage = true;
+		itemget();
 	}else{
-		document.getElementById("input").innerHTML = "Please write only a cardinal direction"
+		document.getElementById("input").value = "Please write only a cardinal direction or the take [item] action"
 	}
 }
-function Move(go){
-	if (room == "one"){
-		switch (go){
-			case 1:
-				room = "three";
-				locationSign();
-				break;
-			case 2:
-			
-				break;
-			case 3:
-				
-				break;
-			case 4:
-				
-				break;
-		}
-	}else if (room == "two"){
-		switch (go){
-			case 1:
-				
-				break;
-			case 2:
-				
-				break;
-			case 3:
-				
-				break;
-			case 4:
-				
-				break;
-		}
-	}else if (room == "three"){
-		switch (go){
-			case 1:
-				
-				break;
-			case 2:
-				
-				break;
-			case 3:
-				
-				break;
-			case 4:
-				
-				break;
-		}
-	}else if (room == "four"){
-		switch (go){
-			case 1:
-				
-				break;
-			case 2:
-				
-				break;
-			case 3:
-				
-				break;
-			case 4:
-				
-				break;
-		}
-	}else if (room == "five"){
-		switch (go){
-			case 1:
-				
-				break;
-			case 2:
-				
-				break;
-			case 3:
-				
-				break;
-			case 4:
-				
-				break;
-		}
-	}else if (room == "six"){
-		switch (go){
-			case 1:
-				
-				break;
-			case 2:
-				
-				break;
-			case 3:
-				
-				break;
-			case 4:
-				
-				break;
-		}
-	}else if (room == "seven"){
-		switch (go){
-			case 1:
-				
-				break;
-			case 2:
-				
-				break;
-			case 3:
-				
-				break;
-			case 4:
-				
-				break;
-		}
-	}else if (room == "eight"){
-		switch (go){
-			case 1:
-				
-				break;
-			case 2:
-				
-				break;
-			case 3:
-				
-				break;
-			case 4:
-				
-				break;
-		}
-	}else if (room == "nine"){
-		switch (go){
-			case 1:
-				
-				break;
-			case 2:
-				
-				break;
-			case 3:
-				
-				break;
-			case 4:
-				
-				break;
-		}
-	}else if (room == "ten"){
-		switch (go){
-			case 1:
-				
-				break;
-			case 2:
-				
-				break;
-			case 3:
-				
-				break;
-			case 4:
-				
-				break;
-		}
-	}
+
+function itemget(){
+	console.log("Hmmmmm");
+	document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + "you pick it up and put it in your bag.";
+	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
 }
-function updatedisplay(message){
-	document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + message;
+function updatedisplay(move){
 	document.getElementById("n").disabled = false;
 	document.getElementById("w").disabled = false;
 	document.getElementById("s").disabled = false;
 	document.getElementById("e").disabled = false;
-	if(room == "one"){
-		document.getElementById("story").innerHTML = "Foolish Mortal you have angered me!!!! Go into these putrid wastes and find me four items for my feast.";	
-	}else if(room == "two"){
+	switch(room){
+		case "one":
+			console.log("AHHHH");
+			if(move == "n"){
+				console.log("AHHHH");
+				room = "three";
+				locationSign();
+			}
+			//locationDemon();
+			break;
+		case "two":
+			//locationZombie();
+			break;
+		case "three":
+			if(move == "n"){
+				console.log("AHHHH");
+				room = "six";
+				locationFork();
+			}
+			if(move == "w"){
+				console.log("AHHHH");
+				room = "two";
+				locationZombie();
+			}
+			if(move == "s"){
+				console.log("AHHHH");
+				room = "one";
+				locationDemon();
+			}
+			if(move == "e"){
+				console.log("AHHHH");
+				room = "four";
+				locationSpider();
+			}
+			//locationSign();
+			break;
+		case "four":
+			if(move == "n"){
+				console.log("AHHHH");
+				room = "seven";
+				locationSkeleton();
+			}
+			//locationSpider();
+			break;
+		case "five":
+			if(move == "n"){
+				console.log("AHHHH");
+				room = "eight";
+				locationArmor();
+			}
+			if(move == "e"){
+				console.log("AHHHH");
+				room = "six";
+				locationFork();
+			}
+			//locationSwords();
+			break;
+		case "six":
+			if(move == "n"){
+				console.log("AHHHH");
+				room = "nine";
+				locationBats();
+			}
+			if(move == "s"){
+				console.log("AHHHH");
+				room = "three";
+				locationSign();
+			}
+			//locationFork();
+			break;
+		case "seven":
+			if(move == "n"){
+				console.log("AHHHH");
+				room = "ten";
+				locationCourage();
+			}
+			if(move == "s"){
+				console.log("AHHHH");
+				room = "four";
+				locationSpider();
+			}
+			//locationSkeleton();
+			break;
+		case "eight":
+			if(move == "s"){
+				console.log("AHHHH");
+				room = "five";
+				locationSwords();
+			}
+			if(move == "e"){
+				console.log("AHHHH");
+				room = "nine";
+				locationBats();
+			}
+			//locationArmor();
+			break;
+		case "nine":
+			if(move == "w"){
+				console.log("AHHHH");
+				room = "eight";
+				locationArmor();
+			}
+			if(move == "s"){
+				console.log("AHHHH");
+				room = "six";
+				locationFork();
+			}
+			if(move == "e"){
+				console.log("AHHHH");
+				room = "ten";
+				locationCourage();
+			}
+			//locationBats();
+			break;
+		case "ten":
+			if(move == "w"){
+				console.log("AHHHH");
+				room = "nine";
+				locationBats();
+			}
+			if(move == "s"){
+				console.log("AHHHH");
+				room = "seven";
+				locationSkeleton();
+			}
+			//locationCourage();
+			break;
 		
-	}else if(room == "three"){
-		
-	}else if(room == "four"){
-		
-	}else if(room == "five"){
-		
-	}else if(room == "six"){
-		
-	}else if(room == "seven"){
-		
-	}else if(room == "eight"){
-		
-	}else if(room == "nine"){
-		
-	}else if(room == "ten"){
-		
-	}
+	}	
 }
+
 function locationDemon(){
-	
+	if(first.one == true){
+	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
+	first.one = false;
+	}
+	if(items.hasfork == false || items.hasswords == false || items.hasplate == false || items.hascourage == false){
+	document.getElementById("story").innerHTML = LocText.one;
+	}else{
+		document.getElementById("story").innerHTML = LocText.win;
+	}
+	document.getElementById("w").disabled = true;
+	document.getElementById("s").disabled = true;
+	document.getElementById("e").disabled = true;
 }
 function locationZombie(){
-	if(first2 == true){
+	if(first.two == true){
 	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
-	first2 = false;
+	first.two = false;
+	}
+	document.getElementById("story").innerHTML = LocText.two;
+	document.getElementById("n").disabled = true;
+	document.getElementById("w").disabled = true;
+	document.getElementById("s").disabled = true;
 }
 function locationSign(){
+	if(first.three == true){
+	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
+	first.three = false;
+	}
+	document.getElementById("story").innerHTML = LocText.three;
 	
 }
 function locationSpider(){
-	
+	if(first.four == true){
+	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
+	first.four = false;
+	}
+	document.getElementById("story").innerHTML = LocText.four;
+	document.getElementById("w").disabled = true;
+	document.getElementById("s").disabled = true;
+	document.getElementById("e").disabled = true;
 }
 function locationSwords(){
-	
+	if(first.five == true){
+	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
+	first.five = false;
+	}
+	document.getElementById("story").innerHTML = LocText.five;
+	document.getElementById("w").disabled = true;
+	document.getElementById("s").disabled = true;
 }
 function locationFork(){
-	
+	if(first.six == true){
+	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
+	first.six = false;
+	}
+	document.getElementById("story").innerHTML = LocText.six;
+	document.getElementById("w").disabled = true;
+	document.getElementById("e").disabled = true;
 }
 function locationSkeleton(){
-	
+	if(first.seven == true){
+	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
+	first.seven = false;
+	}
+	document.getElementById("story").innerHTML = LocText.seven;
+
+	document.getElementById("w").disabled = true;
+	document.getElementById("e").disabled = true;
 }
 function locationArmor(){
-	
+	if(first.eight == true){
+	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
+	first.eight = false;
+	}
+	document.getElementById("story").innerHTML = LocText.eight;
+	document.getElementById("s").disabled = true;
+	document.getElementById("e").disabled = true;
 }
 function locationBats(){
-	
+	if(first.nine == true){
+	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
+	first.nine = false;
+	}
+	document.getElementById("story").innerHTML = LocText.nine;
+	document.getElementById("n").disabled = true;
 }
 function locationCourage(){
-	
+	if(first.ten == true){
+	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
+	first.ten = false;
+	}
+	document.getElementById("story").innerHTML = LocText.ten;
+	if(first.four == false){
+		document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + LocText.tencont;
+	}
+	document.getElementById("n").disabled = true;
+	document.getElementById("e").disabled = true;
 }

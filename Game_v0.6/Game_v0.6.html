@@ -9,19 +9,19 @@ Game_v0.6
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<title>The Demon's Task (Game v0.6)</title>
 		<link rel="stylesheet" type="text/css" href="Game_v0.6_CSS.css">
-		<script src="Game_v0.6_JavaScript.js"></script>
+		<script type="text/javascript" src="Game_v0.6_JavaScript.js"></script>
 	</Head>
 	<Body onLoad="onstart()">
 		<div class="background">
 			<div class="game">
 				Welcome to <br/><h2><em>The Demon's Task</em></h2><br/>
-				<textarea readonly id="story" rows="10" cols="50">Foolish Mortal you have angered me!!!! Go into these putrid wastes and find me four items for my feast.</textarea><br/>
+				<textarea readonly id="story" rows="10" cols="50"></textarea><br/>
 				<textarea id="input" rows="2" cols="48"></textarea><br/>
 				<input type="button" value="go" onclick="go()"><br/><br/>
-				<input id="n" type="button" value="north" onclick="Move(1)"><br/>
-				<input id="w" type="button" value="west" onclick="Move(2)">
-				<input id="e" type="button" value="east" onclick="Move(4)"><br/>
-				<input id="s" type="button" value="south" onclick="Move(3)"><br/>
+				<input id="n" type="button" value="north" onclick="updatedisplay('n')"><br/>
+				<input id="w" type="button" value="west" onclick="updatedisplay('w')">
+				<input id="e" type="button" value="east" onclick="updatedisplay('e')"><br/>
+				<input id="s" type="button" value="south" onclick="updatedisplay('s')"><br/>
 				<br/>you currently have <p id="points">0</p> points
 				<br/><br/><br/>
 				<p>created by Connor Doetsch for CMPT 120L 202<br>
