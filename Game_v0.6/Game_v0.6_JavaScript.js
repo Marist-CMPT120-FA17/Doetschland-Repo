@@ -10,9 +10,14 @@ var first ={
 	7:true,
 	8:true,
 	9:true,
-	10:true,
+	10:true
 }
-;
+var items = {
+	hasfork:false,
+	hasswords:false,
+	hascourage:false,
+	hasplate:false
+}
 var LocText = {
 	1:"",
 	2:"",
@@ -23,11 +28,16 @@ var LocText = {
 	7:"",
 	8:"",
 	9:"",
-	10:"",
-};
+	10:""
+}
+function onstart(){
+	console.log("AHHHH");
+	document.getElementById("story").innerHTML = "Foolish Mortal you have angered me!!!! Go into these putrid wastes and find me four items for my feast.";	
+}
 function go(){
 	if(document.getElementById("input").innerHTML == "N"){
 		Move(1);
+		console.log("please work");
 	}else if(document.getElementById("input").innerHTML.toUppercase == "W"){
 		Move(2);
 	}else if(document.getElementById("input").innerHTML.toUppercase == "S"){
@@ -42,139 +52,152 @@ function Move(go){
 	if (room == "one"){
 		switch (go){
 			case 1:
-				document.getElementById("story").innerHTML = "You head out to the exterior of the ship.";
-				console.log("start 1");
-				room = "two"
-				updatedisplay(Loc2Text);;
+				room = "three";
+				locationSign();
 				break;
 			case 2:
-				document.getElementById("story").innerHTML = "There is no exit this way.";
-				console.log("start 2");
+			
 				break;
 			case 3:
-				document.getElementById("story").innerHTML = "There is no exit this way.";
-				console.log("start 3");
+				
 				break;
 			case 4:
-				document.getElementById("story").innerHTML = "There is no exit this way.";
-				console.log("start 4");
+				
 				break;
 		}
 	}else if (room == "two"){
 		switch (go){
 			case 1:
-				document.getElementById("story").innerHTML = "you head towards the bridge, perhaps there will be someone who can help on this main pathway.";
-				console.log("middle 1");
-				room = "four"
-				updatedisplay(Loc4Text);;
+				
 				break;
 			case 2:
-				document.getElementById("story").innerHTML = "you head down towards the river bank, better to stay off the main road in your condition.";
-				console.log("middle 2");
-				room = "three"
-				updatedisplay(Loc3Text);;
+				
 				break;
 			case 3:
-				document.getElementById("story").innerHTML = "you head back into your ship.";
-				console.log("middle 3");
-				room = "one";
-				updatedisplay(Loc1Text);;
+				
 				break;
 			case 4:
-				document.getElementById("story").innerHTML = "There is no exit this way.";
-				console.log("middle 4");
+				
 				break;
 		}
 	}else if (room == "three"){
 		switch (go){
 			case 1:
-				document.getElementById("story").innerHTML = "you ford the river and head up the side of a hill.";
-				console.log("end 1");
-				room = "five"
-				updatedisplay(Loc5Text);;
+				
 				break;
 			case 2:
-				document.getElementById("story").innerHTML = "There is no exit this way.";
-				console.log("end 2");
+				
 				break;
 			case 3:
-				document.getElementById("story").innerHTML = "There is no exit this way.";
-				console.log("end 3");
+				
 				break;
 			case 4:
-				document.getElementById("story").innerHTML = "you travel back to your ship.";
-				console.log("end 4");
-				room = "two"
-				updatedisplay(Loc2Text);;
+				
 				break;
 		}
 	}else if (room == "four"){
 		switch (go){
 			case 1:
-				document.getElementById("story").innerHTML = "you head further along the road.";
-				console.log("end 1");
-				room = "six"
-				updatedisplay(Loc6Text);;
+				
 				break;
 			case 2:
-				document.getElementById("story").innerHTML = "There is no exit this way.";
-				console.log("end 2");
+				
 				break;
 			case 3:
-				document.getElementById("story").innerHTML = "You travel back to your ship.";
-				console.log("end 3");
-				room = "two"
-				updatedisplay(Loc2Text);;
+				
 				break;
 			case 4:
-				document.getElementById("story").innerHTML = "There is no exit this way.";
-				console.log("end 4");
+				
 				break;
 		}
 	}else if (room == "five"){
 		switch (go){
 			case 1:
-				document.getElementById("story").innerHTML = "There is no exit this way.";
-				console.log("end 1");
+				
 				break;
 			case 2:
-				document.getElementById("story").innerHTML = "There is no exit this way.";
-				console.log("end 2");
+				
 				break;
 			case 3:
-				document.getElementById("story").innerHTML = "you slide back down the small hillside.";
-				console.log("end 3");
-				room = "three"
-				updatedisplay(Loc3Text);;
+				
 				break;
 			case 4:
-				document.getElementById("story").innerHTML = "you wrap around the side of the castle wall.";
-				console.log("end 4");
-				room = "six"
-				updatedisplay(Loc6Text);
+				
 				break;
 		}
 	}else if (room == "six"){
 		switch (go){
 			case 1:
-				document.getElementById("story").innerHTML = "There is no exit this way.";
-				console.log("end 1");
+				
 				break;
 			case 2:
-				document.getElementById("story").innerHTML = "you wrap around the side of the castle wall.";
-				console.log("end 2");
-				room = "five"
-				updatedisplay(Loc5Text);
+				
 				break;
 			case 3:
-				document.getElementById("story").innerHTML = "You head back to the old bridge.";
-				console.log("end 3");
-				room = "four"
-				updatedisplay(Loc4Text);
+				
 				break;
 			case 4:
-				document.getElementById("story").innerHTML = "There is no exit this way.";
-				console.log("end 4");
+				
+				break;
+		}
+	}else if (room == "seven"){
+		switch (go){
+			case 1:
+				
+				break;
+			case 2:
+				
+				break;
+			case 3:
+				
+				break;
+			case 4:
+				
+				break;
+		}
+	}else if (room == "eight"){
+		switch (go){
+			case 1:
+				
+				break;
+			case 2:
+				
+				break;
+			case 3:
+				
+				break;
+			case 4:
+				
+				break;
+		}
+	}else if (room == "nine"){
+		switch (go){
+			case 1:
+				
+				break;
+			case 2:
+				
+				break;
+			case 3:
+				
+				break;
+			case 4:
+				
+				break;
+		}
+	}else if (room == "ten"){
+		switch (go){
+			case 1:
+				
+				break;
+			case 2:
+				
+				break;
+			case 3:
+				
+				break;
+			case 4:
+				
 				break;
 		}
 	}
@@ -186,23 +209,25 @@ function updatedisplay(message){
 	document.getElementById("s").disabled = false;
 	document.getElementById("e").disabled = false;
 	if(room == "one"){
-		document.getElementById("w").disabled = true;
-		document.getElementById("s").disabled = true;
-		document.getElementById("e").disabled = true;
+		document.getElementById("story").innerHTML = "Foolish Mortal you have angered me!!!! Go into these putrid wastes and find me four items for my feast.";	
 	}else if(room == "two"){
-		document.getElementById("e").disabled = true;
+		
 	}else if(room == "three"){
-		document.getElementById("w").disabled = true;
-		document.getElementById("s").disabled = true;
+		
 	}else if(room == "four"){
-		document.getElementById("w").disabled = true;
-		document.getElementById("e").disabled = true;
+		
 	}else if(room == "five"){
-		document.getElementById("n").disabled = true;
-		document.getElementById("w").disabled = true;
+		
 	}else if(room == "six"){
-		document.getElementById("n").disabled = true;
-		document.getElementById("e").disabled = true;
+		
+	}else if(room == "seven"){
+		
+	}else if(room == "eight"){
+		
+	}else if(room == "nine"){
+		
+	}else if(room == "ten"){
+		
 	}
 }
 function locationDemon(){
