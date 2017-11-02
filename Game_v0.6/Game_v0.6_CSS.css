@@ -1,12 +1,13 @@
 /*The CSS file for Game_v0.6.html*/
 div.game {
-	margin:auto;
-	width:60%;
+	width:50%;
 	border:20px solid red;
-	padding:5px;
 	text-align:center;
 	background-color:silver;
 	}
 div.background{
 	background-color:black;
+}
+img.picture{
+	float:right;
 }

@@ -35,6 +35,9 @@ var LocText = {
 function onstart(){
 	console.log("AHHHH");
 	document.getElementById("story").innerHTML = LocText.one;	
+	document.getElementById("w").disabled = true;
+	document.getElementById("s").disabled = true;
+	document.getElementById("e").disabled = true;
 }
 function go(){
 	console.log("AHHHH");
@@ -105,6 +108,11 @@ function updatedisplay(move){
 			//locationDemon();
 			break;
 		case "two":
+			if(move == "e"){
+				console.log("AHHHH");
+				room = "three";
+				locationSign();
+			}
 			//locationZombie();
 			break;
 		case "three":
@@ -226,6 +234,9 @@ function updatedisplay(move){
 }
 
 function locationDemon(){
+	document.getElementById("w").disabled = true;
+	document.getElementById("s").disabled = true;
+	document.getElementById("e").disabled = true;
 	if(first.one == true){
 	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
 	first.one = false;
@@ -235,19 +246,18 @@ function locationDemon(){
 	}else{
 		document.getElementById("story").innerHTML = LocText.win;
 	}
-	document.getElementById("w").disabled = true;
-	document.getElementById("s").disabled = true;
-	document.getElementById("e").disabled = true;
+	document.getElementById("picture").src='map for game_v0.6 Loc1.jpg';
 }
 function locationZombie(){
+	document.getElementById("n").disabled = true;
+	document.getElementById("w").disabled = true;
+	document.getElementById("s").disabled = true;
 	if(first.two == true){
 	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
 	first.two = false;
 	}
 	document.getElementById("story").innerHTML = LocText.two;
-	document.getElementById("n").disabled = true;
-	document.getElementById("w").disabled = true;
-	document.getElementById("s").disabled = true;
+	document.getElementById("picture").src='map for game_v0.6 Loc2.jpg';
 }
 function locationSign(){
 	if(first.three == true){
@@ -255,64 +265,71 @@ function locationSign(){
 	first.three = false;
 	}
 	document.getElementById("story").innerHTML = LocText.three;
-	
+	document.getElementById("picture").src='map for game_v0.6 Loc3.jpg';
 }
 function locationSpider(){
+	document.getElementById("w").disabled = true;
+	document.getElementById("s").disabled = true;
+	document.getElementById("e").disabled = true;
 	if(first.four == true){
 	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
 	first.four = false;
 	}
 	document.getElementById("story").innerHTML = LocText.four;
-	document.getElementById("w").disabled = true;
-	document.getElementById("s").disabled = true;
-	document.getElementById("e").disabled = true;
+	document.getElementById("picture").src = "map for game_v0.6 Loc4.jpg";
 }
 function locationSwords(){
+	document.getElementById("w").disabled = true;
+	document.getElementById("s").disabled = true;
 	if(first.five == true){
 	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
 	first.five = false;
 	}
 	document.getElementById("story").innerHTML = LocText.five;
-	document.getElementById("w").disabled = true;
-	document.getElementById("s").disabled = true;
+	document.getElementById("picture").src = "map for game_v0.6 Loc5.jpg";
 }
 function locationFork(){
+	document.getElementById("w").disabled = true;
+	document.getElementById("e").disabled = true;
 	if(first.six == true){
 	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
 	first.six = false;
 	}
 	document.getElementById("story").innerHTML = LocText.six;
-	document.getElementById("w").disabled = true;
-	document.getElementById("e").disabled = true;
+	document.getElementById("picture").src = "map for game_v0.6 Loc6.jpg";
 }
 function locationSkeleton(){
+	document.getElementById("w").disabled = true;
+	document.getElementById("e").disabled = true;
 	if(first.seven == true){
 	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
 	first.seven = false;
 	}
 	document.getElementById("story").innerHTML = LocText.seven;
-
-	document.getElementById("w").disabled = true;
-	document.getElementById("e").disabled = true;
+	document.getElementById("picture").src = "map for game_v0.6 Loc7.jpg";
 }
 function locationArmor(){
+	document.getElementById("w").disabled = true;
+	document.getElementById("n").disabled = true;
 	if(first.eight == true){
 	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
 	first.eight = false;
 	}
 	document.getElementById("story").innerHTML = LocText.eight;
-	document.getElementById("s").disabled = true;
-	document.getElementById("e").disabled = true;
+	document.getElementById("picture").src = "map for game_v0.6 Loc8.jpg";
 }
 function locationBats(){
+	document.getElementById("n").disabled = true;
 	if(first.nine == true){
 	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
 	first.nine = false;
 	}
 	document.getElementById("story").innerHTML = LocText.nine;
-	document.getElementById("n").disabled = true;
+	document.getElementById("picture").src = "map for game_v0.6 Loc9.jpg";
 }
 function locationCourage(){
+	document.getElementById("n").disabled = true;
+	document.getElementById("e").disabled = true;
 	if(first.ten == true){
 	document.getElementById("points").innerHTML = parseInt(document.getElementById("points").innerHTML) + 5;
 	first.ten = false;
@@ -321,6 +338,5 @@ function locationCourage(){
 	if(first.four == false){
 		document.getElementById("story").innerHTML = document.getElementById("story").innerHTML + LocText.tencont;
 	}
-	document.getElementById("n").disabled = true;
-	document.getElementById("e").disabled = true;
+	document.getElementById("picture").src = "map for game_v0.6 Loc10.jpg";
 }
