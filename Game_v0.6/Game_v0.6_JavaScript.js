@@ -104,6 +104,8 @@ function updatedisplay(move){
 				console.log("AHHHH");
 				room = "three";
 				locationSign();
+			}else{
+				notAWay()
 			}
 			//locationDemon();
 			break;
@@ -112,6 +114,8 @@ function updatedisplay(move){
 				console.log("AHHHH");
 				room = "three";
 				locationSign();
+			}else{
+				notAWay()
 			}
 			//locationZombie();
 			break;
@@ -135,6 +139,8 @@ function updatedisplay(move){
 				console.log("AHHHH");
 				room = "four";
 				locationSpider();
+			}else{
+				notAWay()
 			}
 			//locationSign();
 			break;
@@ -143,6 +149,8 @@ function updatedisplay(move){
 				console.log("AHHHH");
 				room = "seven";
 				locationSkeleton();
+			}else{
+				notAWay()
 			}
 			//locationSpider();
 			break;
@@ -156,6 +164,8 @@ function updatedisplay(move){
 				console.log("AHHHH");
 				room = "six";
 				locationFork();
+			}else{
+				notAWay()
 			}
 			//locationSwords();
 			break;
@@ -169,6 +179,8 @@ function updatedisplay(move){
 				console.log("AHHHH");
 				room = "three";
 				locationSign();
+			}else{
+				notAWay()
 			}
 			//locationFork();
 			break;
@@ -182,6 +194,8 @@ function updatedisplay(move){
 				console.log("AHHHH");
 				room = "four";
 				locationSpider();
+			}else{
+				notAWay()
 			}
 			//locationSkeleton();
 			break;
@@ -195,6 +209,8 @@ function updatedisplay(move){
 				console.log("AHHHH");
 				room = "nine";
 				locationBats();
+			}else{
+				notAWay()
 			}
 			//locationArmor();
 			break;
@@ -213,6 +229,8 @@ function updatedisplay(move){
 				console.log("AHHHH");
 				room = "ten";
 				locationCourage();
+			}else{
+				notAWay()
 			}
 			//locationBats();
 			break;
@@ -226,13 +244,17 @@ function updatedisplay(move){
 				console.log("AHHHH");
 				room = "seven";
 				locationSkeleton();
+			}else{
+				notAWay()
 			}
 			//locationCourage();
 			break;
-		
 	}	
 }
-
+function notAWay(){
+	console.log("please");
+	document.getElementById("input").value = "you cannot go that way";
+}
 function locationDemon(){
 	document.getElementById("w").disabled = true;
 	document.getElementById("s").disabled = true;
