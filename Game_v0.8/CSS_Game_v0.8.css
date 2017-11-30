@@ -10,4 +10,5 @@ div.background{
 }
 img.picture{
 	float:right;
+	border:50px solid blue;
 }
