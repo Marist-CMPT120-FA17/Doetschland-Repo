@@ -1,4 +1,4 @@
-//javascript for Game_v0.8
+//javascript for Final
 
 function Location(id, name, description, item) {
     this.id = id;
