@@ -1,0 +1,14 @@
+/*CSS for Game_v0.8*/
+div.game {
+	width:50%;
+	border:20px solid blue;
+	text-align:center;
+	background-color:silver;
+	}
+div.background{
+	background-color:black;
+}
+img.picture{
+	float:right;
+	border:50px solid blue;
+}
